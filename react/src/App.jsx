@@ -6,18 +6,29 @@ function App() {
   const availableCount = products.filter(p => p.inStock).length;
   
   return (
-    <div className="app">
+    <div className="app-container">
       <header className="app-header">
-        <h1>Tech Shop</h1>
-        <p>{products.length} products | {availableCount} available</p>
+        <div className="header-content">
+          <h1>Tech<span>Shop</span></h1>
+          <div className="stats-badge">
+            <span className="dot"></span>
+            {products.length} Products | {availableCount} In Stock
+          </div>
+        </div>
+        <p className="header-subtitle">Premium equipment for modern professionals</p>
       </header>
       
-      <div className="gallery-grid">
-        {products.map(product => (
-          /* Resolved TODO: Render ProductCard with product props */
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </div>
+      <main className="gallery-section">
+        <div className="gallery-grid">
+          {products.map(product => (
+            <ProductCard key={product.id} {...product} />
+          ))}
+        </div>
+      </main>
+
+      <footer className="app-footer">
+        <p>© 2024 TechShop. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
