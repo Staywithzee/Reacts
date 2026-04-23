@@ -1,32 +1,10 @@
-:root {
-  --font-main: 'Outfit', sans-serif;
-  --bg-color-1: #09090e;
-  --bg-color-2: #16102b;
-  --bg-color-3: #110e14;
-  --text-primary: #ffffff;
-}
-
 body {
   margin: 0;
-  font-family: var(--font-main);
-  color: var(--text-primary);
-  background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3));
-  background-size: 300% 300%;
-  animation: liquidBg 12s ease infinite;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@keyframes liquidBg {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
 }
 
 #root {
-  width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }

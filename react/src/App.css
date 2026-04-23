@@ -1,187 +1,23 @@
-.page {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
-  box-sizing: border-box;
-}
+/* App.css */
+.app { max-width: 1100px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif; }
+.app-header { background: #0077cc; color: white; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 25px; }
 
-.card {
-  position: relative;
-  width: min(760px, 92vw);
-  border-radius: 28px;
-  padding: 3.5rem;
-  /* Glassmorphism Inner Container */
-  background: rgba(30, 25, 45, 0.4);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.product-card { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; transition: transform 0.2s; color: #333; }
 
-.card:hover {
-  transform: translateY(-10px) scale(1.02);
-}
+.product-card:hover { transform: translateY(-4px); }
+.unavailable { opacity: 0.65; }
+.badge { position: absolute; top: 10px; right: 10px; padding: 3px 8px; border-radius: 10px; font-size: 11px; font-weight: bold; }
+.badge-green { background: #d4edda; color: #155724; }
+.badge-red { background: #f8d7da; color: #721c24; }
+.product-img { width: 100%; border-radius: 6px; margin-bottom: 8px; }
+.category { font-size: 11px; color: #0077cc; font-weight: bold; text-transform: uppercase; }
+h3 { margin: 8px 0; font-size: 15px; }
+.rating { color: #f5a623; font-size: 13px; margin: 5px 0; }
+.review-count { color: #888; font-size: 11px; margin-left: 5px; }
 
-/* === The Animated Rainbow Glowing Border Effect === */
-.card::before {
-  content: '';
-  position: absolute;
-  /* Slightly expand behind the card */
-  top: -3px; left: -3px; right: -3px; bottom: -3px;
-  background: linear-gradient(
-    45deg,
-    #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000
-  );
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(12px);
-  border-radius: 30px;
-  animation: glowingRainbow 15s linear infinite;
-  opacity: 0.8;
-  transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
-}
-
-.card:hover::before {
-  opacity: 1;
-  filter: blur(20px);
-}
-
-/* To ensure text is clickable and has its own background scope */
-.card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: inherit;
-  border-radius: inherit;
-  backdrop-filter: inherit;
-  z-index: -1;
-}
-
-@keyframes glowingRainbow {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
-}
-
-.greeting-block {
-  text-align: left;
-}
-
-.greeting-label {
-  margin: 0;
-  color: #00ffd5;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  animation: slideFadeIn 0.8s ease-out forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.greeting-block h1 {
-  margin: 12px 0 16px;
-  color: #ffffff;
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 800;
-  line-height: 1.1;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  animation: slideFadeIn 0.8s ease-out 0.2s forwards;
-  opacity: 0;
-  transform: translateY(20px);
-  background: linear-gradient(to right, #ffffff, #d1d5db);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.date-time,
-.hour-line,
-.mood-line {
-  margin: 0;
-  color: #e5e7eb;
-  font-weight: 300;
-  font-size: 1.1rem;
-  animation: slideFadeIn 0.8s ease-out 0.4s forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.hour-line {
-  margin-top: 8px;
-}
-.mood-line {
-  margin-top: 8px;
-  font-style: italic;
-  font-weight: 400;
-  color: #ffb86c;
-  text-shadow: 0 0 8px rgba(255, 184, 108, 0.4);
-}
-
-.tips-block {
-  margin-top: 40px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  animation: slideFadeIn 0.8s ease-out 0.6s forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.tips-block h2 {
-  margin: 0 0 20px;
-  font-size: 1.5rem;
-  color: #ffffff;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.tips-list {
-  margin: 0;
-  padding-left: 0;
-  list-style: none;
-  display: grid;
-  gap: 16px;
-}
-
-.tips-list li {
-  background: rgba(0, 0, 0, 0.25);
-  padding: 16px 20px;
-  border-radius: 16px;
-  color: #d1d5db;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  cursor: default;
-  font-size: 1.05rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.tips-list li::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 4px; height: 100%;
-  background: linear-gradient(to bottom, #00ffd5, #7a00ff);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.tips-list li:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateX(12px) scale(1.01);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.tips-list li:hover::before {
-  opacity: 1;
-}
-
-@keyframes slideFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+.price { font-size: 18px; color: #0077cc; }
+.add-btn { background: #0077cc; color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; }
+.add-btn:disabled { background: #ccc; cursor: not-allowed; }
+.add-btn:hover:not(:disabled) { background: #005fa3; }

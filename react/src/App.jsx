@@ -1,28 +1,25 @@
-import Greeting from './Greeting';
-import './App.css';
-
-const tips = [
-  "Stay positive and happy. Work hard and don't give up hope.",
-  "Success is not final, failure is not fatal.",
-  "Believe you can and you're halfway there."
-];
+import "./App.css";
+import products from "./data/products";
+import ProductCard from "./components/ProductCard";
 
 function App() {
+  const availableCount = products.filter(p => p.inStock).length;
+  
   return (
-    <main className="page">
-      <section className="card">
-        <Greeting name="Ratchanon" />
-        <div className="tips-block">
-          <h2>Motivational Tips</h2>
-          <ul className="tips-list">
-            {tips.map((tip, index) => (
-              <li key={index}>{tip}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    </main>
-  )
+    <div className="app">
+      <header className="app-header">
+        <h1>Tech Shop</h1>
+        <p>{products.length} products | {availableCount} available</p>
+      </header>
+      
+      <div className="gallery-grid">
+        {products.map(product => (
+          /* Resolved TODO: Render ProductCard with product props */
+          <ProductCard key={product.id} {...product} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default App;
