@@ -11,7 +11,7 @@ function App() {
   return (
     <main className="page">
       <section className="card">
-        <Greeting name="Watcharin" />
+        <Greeting name="Ratchanon" />
         <div className="tips-block">
           <h2>Motivational Tips</h2>
           <ul className="tips-list">
