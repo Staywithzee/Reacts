@@ -1,187 +1,85 @@
+/* ── Greeting / Card page (legacy) ──────────────────────── */
 .page {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 24px;
-  box-sizing: border-box;
 }
 
 .card {
-  position: relative;
   width: min(760px, 92vw);
-  border-radius: 28px;
-  padding: 3.5rem;
-  /* Glassmorphism Inner Container */
-  background: rgba(30, 25, 45, 0.4);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 20px;
+  padding: 3rem;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
 }
 
-.card:hover {
-  transform: translateY(-10px) scale(1.02);
-}
-
-/* === The Animated Rainbow Glowing Border Effect === */
-.card::before {
-  content: '';
-  position: absolute;
-  /* Slightly expand behind the card */
-  top: -3px; left: -3px; right: -3px; bottom: -3px;
-  background: linear-gradient(
-    45deg,
-    #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000
-  );
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(12px);
-  border-radius: 30px;
-  animation: glowingRainbow 15s linear infinite;
-  opacity: 0.8;
-  transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
-}
-
-.card:hover::before {
-  opacity: 1;
-  filter: blur(20px);
-}
-
-/* To ensure text is clickable and has its own background scope */
-.card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: inherit;
-  border-radius: inherit;
-  backdrop-filter: inherit;
-  z-index: -1;
-}
-
-@keyframes glowingRainbow {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
-}
-
-.greeting-block {
-  text-align: left;
-}
+.greeting-block { text-align: left; }
 
 .greeting-label {
-  margin: 0;
-  color: #00ffd5;
-  font-size: 1rem;
+  font-size: 0.75rem;
+  color: #666;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  animation: slideFadeIn 0.8s ease-out forwards;
-  opacity: 0;
-  transform: translateY(20px);
 }
 
 .greeting-block h1 {
-  margin: 12px 0 16px;
-  color: #ffffff;
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 800;
-  line-height: 1.1;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  animation: slideFadeIn 0.8s ease-out 0.2s forwards;
-  opacity: 0;
-  transform: translateY(20px);
-  background: linear-gradient(to right, #ffffff, #d1d5db);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin: 10px 0 14px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #f0f0f0;
+  letter-spacing: -0.03em;
 }
 
 .date-time,
-.hour-line,
-.mood-line {
-  margin: 0;
-  color: #e5e7eb;
-  font-weight: 300;
-  font-size: 1.1rem;
-  animation: slideFadeIn 0.8s ease-out 0.4s forwards;
-  opacity: 0;
-  transform: translateY(20px);
+.hour-line {
+  color: #a0a0a0;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
-.hour-line {
-  margin-top: 8px;
-}
+.hour-line { margin-top: 6px; }
+
 .mood-line {
   margin-top: 8px;
   font-style: italic;
   font-weight: 400;
-  color: #ffb86c;
-  text-shadow: 0 0 8px rgba(255, 184, 108, 0.4);
+  color: #888;
 }
 
 .tips-block {
-  margin-top: 40px;
+  margin-top: 36px;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  animation: slideFadeIn 0.8s ease-out 0.6s forwards;
-  opacity: 0;
-  transform: translateY(20px);
+  border-top: 1px solid #2a2a2a;
 }
 
 .tips-block h2 {
-  margin: 0 0 20px;
-  font-size: 1.5rem;
-  color: #ffffff;
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+  color: #f0f0f0;
   font-weight: 600;
-  letter-spacing: 0.5px;
 }
 
 .tips-list {
-  margin: 0;
-  padding-left: 0;
+  padding: 0;
   list-style: none;
   display: grid;
-  gap: 16px;
+  gap: 10px;
 }
 
 .tips-list li {
-  background: rgba(0, 0, 0, 0.25);
-  padding: 16px 20px;
-  border-radius: 16px;
-  color: #d1d5db;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  cursor: default;
-  font-size: 1.05rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.tips-list li::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 4px; height: 100%;
-  background: linear-gradient(to bottom, #00ffd5, #7a00ff);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  background: #222;
+  padding: 14px 18px;
+  border-radius: 10px;
+  color: #a0a0a0;
+  border: 1px solid #2a2a2a;
+  font-size: 0.95rem;
 }
 
 .tips-list li:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateX(12px) scale(1.01);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.tips-list li:hover::before {
-  opacity: 1;
-}
-
-@keyframes slideFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  background: #252525;
+  color: #e0e0e0;
+  border-color: #333;
 }

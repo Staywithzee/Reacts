@@ -1,28 +1,36 @@
-import Greeting from './Greeting';
+import { ExpenseProvider } from './context/ExpenseContext';
+import ExpenseSummary from './components/ExpenseSummary';
+import AddExpenseForm from './components/AddExpenseForm';
+import ExpenseList from './components/ExpenseList';
 import './App.css';
-
-const tips = [
-  "Stay positive and happy. Work hard and don't give up hope.",
-  "Success is not final, failure is not fatal.",
-  "Believe you can and you're halfway there."
-];
 
 function App() {
   return (
-    <main className="page">
-      <section className="card">
-        <Greeting name="Watcharin" />
-        <div className="tips-block">
-          <h2>Motivational Tips</h2>
-          <ul className="tips-list">
-            {tips.map((tip, index) => (
-              <li key={index}>{tip}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    </main>
-  )
+    <ExpenseProvider>
+      <div className="expense-app">
+
+        <header className="expense-header">
+          <h1>Expense Tracker</h1>
+          <p>Track your spending, stay in control</p>
+        </header>
+
+        <main className="expense-main">
+
+          {/* ── Left panel: Summary + Form ── */}
+          <aside className="panel-left">
+            <ExpenseSummary />
+            <AddExpenseForm />
+          </aside>
+
+          {/* ── Right panel: List ── */}
+          <section className="panel-right">
+            <ExpenseList />
+          </section>
+
+        </main>
+      </div>
+    </ExpenseProvider>
+  );
 }
 
 export default App;
